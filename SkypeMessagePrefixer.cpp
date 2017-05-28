@@ -92,8 +92,8 @@ void PrefixSkypeMessage(std::wstring &message)
 		return;
 	}
 
-	// if message is already prefixed, don't add prefix
-	if (message.find(SKYPE_MESSAGE_PREFIX) != 0)
+	// if message is empty or already prefixed, don't add prefix
+	if (trim(std::wstring(message)).length() > 0 && message.find(SKYPE_MESSAGE_PREFIX) != 0)
 	{
 		// do some additional checks, so we don't get stuff like "!! ! !!" when the user deletes one of the prefix characters
 		message = trim(message);
